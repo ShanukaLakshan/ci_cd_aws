@@ -1,0 +1,37 @@
+ssh -i "aws_ci_cd.pem" ubuntu@ec2-13-115-19-182.ap-northeast-1.compute.amazonaws.com
+http://ec2-13-115-19-182.ap-northeast-1.compute.amazonaws.com/
+sudo apt update
+sudo apt install nginx nodejs npm
+
+root /home/ubuntu/client/_work/ci_cd_aws_client/ci_cd_aws_client/build;
+
+        # Add index.php to the list if you are using PHP
+        index index.html index.htm index.nginx-debian.html;
+
+
+        server_name _;
+        location /api/{
+                proxy_pass http://localhost:3000/;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+
+
+
+https://www.youtube.com/watch?v=JS07npwL3Ps&t=5s&ab_channel=MaheshKariya
+
+https://www.youtube.com/watch?v=0Kn6mAYIRJU&ab_channel=ByteBrilliance
+
+
+server {
+  listen 80 default_server;
+  server_name _;
+
+  # react app & front-end files
+  location / {
+   root __path__;
+   try_files $uri /index.html;
+  }
+}
