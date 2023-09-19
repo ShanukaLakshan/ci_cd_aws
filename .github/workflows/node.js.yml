@@ -16,9 +16,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci
+      - run: yarn ci
         working-directory: ./server
-      - run: npm ci
+      - run: yarn ci
         working-directory: ./client
-      - run: npm run build
+      - run: yarn run build
         working-directory: ./client
+      - run: yarn run server
+        working-directory: ./server
