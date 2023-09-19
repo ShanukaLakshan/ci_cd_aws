@@ -1,7 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const msg = async () => {
+    const response = await fetch("/api");
+
+    if (response.status !== 200) throw Error("Error");
+    return response.body.message;
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -15,7 +21,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React {msg()}
         </a>
       </header>
     </div>
