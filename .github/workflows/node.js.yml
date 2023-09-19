@@ -13,9 +13,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: yarn ci
+      - run: yarn install
         working-directory: ./server
-      - run: yarn ci
+      - run: yarn install
         working-directory: ./client
       - run: yarn run build
         working-directory: ./client
