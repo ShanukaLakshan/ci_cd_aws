@@ -7,36 +7,17 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js 18
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
-
-      - name: Install server dependencies
-        run: yarn install
+          node-version: 18
+      - run: yarn ci
         working-directory: ./server
-
-      - name: Run server CI
-        run: yarn ci
-        working-directory: ./server
-
-      - name: Install client dependencies
-        run: yarn install
+      - run: yarn ci
         working-directory: ./client
-
-      - name: Run client CI
-        run: yarn ci
+      - run: yarn run build
         working-directory: ./client
-
-      - name: Build client
-        run: yarn run build
-        working-directory: ./client
-
-      - name: Start server
-        run: yarn run server
+      - run: yarn run server
         working-directory: ./server
